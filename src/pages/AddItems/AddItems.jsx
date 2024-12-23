@@ -18,7 +18,7 @@ const AddItems = () => {
             ;
 
 
-        axios.post('http://localhost:3000/addItems', initialData, {
+        axios.post('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/addItems', initialData, {
             headers: { 'Content-Type': 'application/json' },
         })
             .then((response) => {

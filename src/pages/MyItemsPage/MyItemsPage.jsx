@@ -6,7 +6,7 @@ const MyItemsPage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/item?email=${user.email}`)
+    fetch(`https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/item?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, [user.email]);

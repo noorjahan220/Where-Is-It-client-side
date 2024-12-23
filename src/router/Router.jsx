@@ -41,13 +41,13 @@ const router = createBrowserRouter([
       {
         path: "/items/:id",
         element: <PrivateRoute><PostDetails /></PrivateRoute>,
-        loader :({params})=>fetch(`http://localhost:3000/items/${params.id}`)
+        loader :({params})=>fetch(`https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/items/${params.id}`)
         
       },
       {
         path: '/allItems',
         element: <AllItems />,
-        loader : () => fetch('http://localhost:3000/items')
+        loader : () => fetch('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/items')
       },
     ]
   },
