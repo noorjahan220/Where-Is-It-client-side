@@ -5,12 +5,28 @@ import { Link } from 'react-router-dom';
 const MyItemsPage = () => {
   const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
+  
 console.log(user)
   useEffect(() => {
     fetch(`https://b10a11-server-side-noorjahan220.vercel.app/item?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, [user.email]);
+
+  const handleDelete = _id =>{
+      fetch(`https://b10a11-server-side-noorjahan220.vercel.app/itemDelete/${_id}`,{
+        method:'DELETE'
+      })
+      .then(res=>res.json())
+      .then(data =>{
+       if(data.deletedCount>0){
+        alert('deleted successfully')
+        const remaining = posts.filter(post => post._id !== _id);
+        setPosts(remaining);
+       }
+      })
+  }
+
 
   return (
     <div>
@@ -55,7 +71,7 @@ console.log(user)
                   <Link to={`/update/${post._id}`}><button className="btn btn-ghost btn-xs">Update</button></Link>
                 </td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">Delete</button>
+                  <button onClick ={()=> handleDelete(post._id)}className="btn btn-ghost btn-xs">Delete</button>
                 </td>
               </tr>
             ))}
