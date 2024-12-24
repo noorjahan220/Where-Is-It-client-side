@@ -3,32 +3,35 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/Authcontext/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 
 
 const Signin = () => {
-    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const { singInUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSignin = e => {
         e.preventDefault();
         const form = e.target;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+        const email =form.email.value;
+        const password = form.password.value;
 
-        signInUser(email,password)
+        singInUser(email,password)
         .then(result=>{
             console.log('sign in ', result.user)
-            // const user = {email: email}
-            // axios.post('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/jwt',user,{withCredentials: true})
+            const user = {email: email}
+            axios.post('https://b10a11-server-side-noorjahan220.vercel.app/jwt',user,{withCredentials: true})
             .then(res =>{
                 console.log(res.data)
+                toast.success('Successfully signed in!');
+                navigate('/');
             })
         })
-        .catch(error =>{
-            console.log(error)
-        })        
+        .catch(() => {
+            toast.error("Cannot sign in, please try again.");
+        });      
     };
 
     const handleGoogleSignIn = () => {

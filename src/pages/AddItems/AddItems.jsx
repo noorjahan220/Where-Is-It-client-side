@@ -3,11 +3,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/Authcontext/AuthContext';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const AddItems = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    const axiosSecure = UseAxiosSecure()
     const handleAddItems = (e) => {
         e.preventDefault();
 
@@ -18,7 +19,7 @@ const AddItems = () => {
             ;
 
 
-        axios.post('https://b10a11-server-side-noorjahan220.vercel.app/items', initialData, {
+            axiosSecure.post('/items', initialData, {
             
             headers: { 'Content-Type': 'application/json' },
         })

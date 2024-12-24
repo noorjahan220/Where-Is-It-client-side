@@ -44,7 +44,7 @@ const handleSignUp = async (e) => {
         toast.success('Successfully registered!');
         navigate('/');
     } catch (error) {
-        toast.error(error.message);
+        toast.error("Cannot sign up, please try again.");
     }
 };
 

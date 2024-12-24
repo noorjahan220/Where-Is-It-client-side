@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ItemsCard from '../Home/itemsCard';
 
+
 const AllItems = () => {
     const items = useLoaderData(); 
     const [searchValue, setSearchValue] = useState('');
+
 
    
     const filteredItems = items.filter(

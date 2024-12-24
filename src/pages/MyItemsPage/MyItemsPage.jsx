@@ -1,16 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/Authcontext/AuthContext';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const MyItemsPage = () => {
   const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
+  const axiosSecure = UseAxiosSecure()
   
 console.log(user)
   useEffect(() => {
-    fetch(`https://b10a11-server-side-noorjahan220.vercel.app/item?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
+    // fetch(`https://b10a11-server-side-noorjahan220.vercel.app/item?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setPosts(data));
+
+    // axios.get(`https://b10a11-server-side-noorjahan220.vercel.app/item?email=${user.email}`,{withCredentials:true})
+    // .then(res => setPosts(res.data))
+
+
+
+    axiosSecure.get(`/item?email=${user.email}`)
+    .then(res => setPosts(res.data))
   }, [user.email]);
 
   const handleDelete = _id =>{

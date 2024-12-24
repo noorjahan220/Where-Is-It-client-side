@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import logo from '../../assets/istockphoto-477273563-612x612.jpg'
 import AuthContext from '../../context/Authcontext/AuthContext';
 import { Link, NavLink } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
     const { user , signOutUser } = useContext(AuthContext);
@@ -10,11 +11,12 @@ const Navbar = () => {
     const handleSignOut =()=>{
         signOutUser()
         .then(()=>{
-            console.log('siccessful sign out')
+            toast.success('Successfully Sign out!');
+        navigate('/');
         })
-        .catch(error=>{
-            console.log('did not signout')
-        })
+        .catch(() => {
+            toast.error("Cannot sign Out, please try again.");
+        });  
     }
   
     const links = <>

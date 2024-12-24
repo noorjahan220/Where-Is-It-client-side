@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import auth from '../../firebase/firebase.init';
+import axios from 'axios';
 
 
 const AuthProvider = ({ children }) => {
@@ -40,16 +41,37 @@ const AuthProvider = ({ children }) => {
     };
 
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth,currentUser=>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            setLoading(false);
-        })
-
-        return () =>{
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+                axios.post('https://b10a11-server-side-noorjahan220.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        localStorage.setItem('authToken', res.data.token); // Store token locally
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        console.error('JWT error:', err);
+                        setLoading(false);
+                    });
+            } else {
+                // Clear token on logout
+                localStorage.removeItem('authToken');
+                axios.post('https://b10a11-server-side-noorjahan220.vercel.app/logout', {}, { withCredentials: true })
+                    .then(() => setLoading(false))
+                    .catch(err => {
+                        console.error('Logout error:', err);
+                        setLoading(false);
+                    });
+            }
+        });
+    
+        return () => {
             unSubscribe();
-        }
-    },[])
+        };
+    }, []);
+    
 
     const authInfo = {
         user,
