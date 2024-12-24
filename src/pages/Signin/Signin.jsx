@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
 
+
 const Signin = () => {
     const { signInUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -19,6 +20,11 @@ const Signin = () => {
         signInUser(email,password)
         .then(result=>{
             console.log('sign in ', result.user)
+            // const user = {email: email}
+            // axios.post('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/jwt',user,{withCredentials: true})
+            .then(res =>{
+                console.log(res.data)
+            })
         })
         .catch(error =>{
             console.log(error)

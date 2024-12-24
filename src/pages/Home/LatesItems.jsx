@@ -6,7 +6,7 @@ const LatesItems = () => {
     const [items, setItems] =useState([]);
 
     useEffect(()=>{
-        fetch('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/items')
+        fetch('https://b10a11-server-side-noorjahan220.vercel.app/items')
         .then(res => res.json())
         .then(data => setItems(data))
     },[])

@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/Authcontext/AuthContext';
+import { Link } from 'react-router-dom';
 
 const MyItemsPage = () => {
   const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
-
+console.log(user)
   useEffect(() => {
-    fetch(`https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/item?email=${user.email}`)
+    fetch(`https://b10a11-server-side-noorjahan220.vercel.app/item?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, [user.email]);
@@ -51,7 +52,7 @@ const MyItemsPage = () => {
                   <span className="badge badge-ghost badge-sm">{post.category}</span>
                 </td>
                 <td>
-                  <button className="btn btn-ghost btn-xs">Update</button>
+                  <Link to={`/update/${post._id}`}><button className="btn btn-ghost btn-xs">Update</button></Link>
                 </td>
                 <td>
                   <button className="btn btn-ghost btn-xs">Delete</button>
@@ -60,7 +61,9 @@ const MyItemsPage = () => {
             ))}
           </tbody>
         </table>
+
       </div>
+      
     </div>
   );
 };

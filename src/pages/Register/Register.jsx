@@ -33,7 +33,7 @@ const handleSignUp = async (e) => {
         await createUser(email, password, name, photo);
 
         const newUser = { email, displayName: name, photoURL: photo };
-        await fetch('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/users', {
+        await fetch('https://b10a11-server-side-noorjahan220.vercel.app/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

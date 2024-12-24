@@ -18,7 +18,8 @@ const AddItems = () => {
             ;
 
 
-        axios.post('https://b10a11-server-side-noorjahan220-jq55gb3g7.vercel.app/addItems', initialData, {
+        axios.post('https://b10a11-server-side-noorjahan220.vercel.app/items', initialData, {
+            
             headers: { 'Content-Type': 'application/json' },
         })
             .then((response) => {
@@ -57,6 +58,7 @@ const AddItems = () => {
                 >
                     <option value="Lost">Lost</option>
                     <option value="Found">Found</option>
+                    <option value="Found">Recovered</option>
                 </select>
             </div>
 
@@ -111,7 +113,7 @@ const AddItems = () => {
                     name="category"
                     className="select select-ghost w-full max-w-xs"
                 >
-                    <option disabled>Category</option>
+                    <option >Category</option>
                     <option>Pets</option>
                     <option>Documents</option>
                     <option>Gadgets</option>
