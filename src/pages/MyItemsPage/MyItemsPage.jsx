@@ -3,6 +3,7 @@ import AuthContext from '../../context/Authcontext/AuthContext';
 import { Link } from 'react-router-dom';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 import Swal from 'sweetalert2'; // Import Swal for the confirmation dialog
+import { Helmet } from 'react-helmet-async';
 
 const MyItemsPage = () => {
   const { user } = useContext(AuthContext);
@@ -64,6 +65,9 @@ const MyItemsPage = () => {
 
   return (
     <div className="p-10 space-y-8 bg-white">
+       <Helmet>
+                      <title> Manage My Items Page</title>
+                  </Helmet>
       {posts.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center space-y-4">
           <h2 className="text-xl font-semibold text-teal-600">You have no posts yet.</h2>

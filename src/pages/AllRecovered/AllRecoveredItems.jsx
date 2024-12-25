@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FiGrid, FiTable, FiMapPin, FiCalendar, FiUser } from 'react-icons/fi'; // Importing icons
 import AuthContext from '../../context/Authcontext/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const AllRecoveredItems = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,9 @@ const AllRecoveredItems = () => {
 
   return (
     <div className="p-10 space-y-8 bg-white">
+       <Helmet>
+                      <title>All Recovered Items Page</title>
+                  </Helmet>
       {/* Button to toggle between grid and table view */}
       <button
         onClick={toggleLayout}

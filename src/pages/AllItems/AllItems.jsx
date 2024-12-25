@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import ItemsCard from '../Home/ItemsCard';
+import { Helmet } from 'react-helmet-async';
 
 const AllItems = () => {
     const items = useLoaderData(); 
@@ -15,6 +16,9 @@ const AllItems = () => {
 
     return (
         <div className="container mx-auto px-6 py-8">
+             <Helmet>
+                            <title>Lost & Found  Page</title>
+                        </Helmet>
             {/* Header Section */}
             <div className="text-center mb-8">
                 <h1 className="text-3xl font-bold text-teal-600 mb-2">Discover Items</h1>

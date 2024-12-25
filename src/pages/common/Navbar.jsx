@@ -57,6 +57,8 @@ const Navbar = () => {
                             <ul
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-white text-teal-600 rounded-box mt-3 w-52 shadow-lg">
+                                  <li><NavLink to="/" className="hover:text-teal-400 transition">Home</NavLink></li>
+                                  <li><NavLink to="/allItems" className="hover:text-teal-400 transition">Lost & Found Items</NavLink></li>  
                                 <li><Link to="/addItems">Add Lost & Found Item</Link></li>
                                 <li><Link to="/allRecovered">All Recovered Items</Link></li>
                                 <li><Link to="/myItems">Manage My Items</Link></li>

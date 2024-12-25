@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate} from 'react-router-dom';
 import AuthContext from '../../context/Authcontext/AuthContext';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateItems = () => {
     const item = useLoaderData();
@@ -51,6 +52,9 @@ const UpdateItems = () => {
 
     return (
         <div className="container mx-auto w-[70%] mb-10 mt-10 bg-white rounded-lg shadow-lg space-y-8">
+             <Helmet>
+                            <title>Update Items Page</title>
+                        </Helmet>
             <h2 className="text-3xl font-extrabold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
                 Update Item Details
             </h2>

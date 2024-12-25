@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useContext } from 'react';
 import AuthContext from './../../context/Authcontext/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const PostDetails = () => {
   const { user } = useContext(AuthContext);
@@ -18,9 +19,9 @@ const PostDetails = () => {
       itemId: item._id,
       recoveredLocation,
       recoveredDate,
-      image:item.image,
-      title :item.title,
-      description : item.description,
+      image: item.image,
+      title: item.title,
+      description: item.description,
       recoveredBy: {
         email: user.email,
         name: user.displayName,
@@ -50,6 +51,9 @@ const PostDetails = () => {
 
   return (
     <div className="container mx-auto px-8 py-8 mb-10 mt-10 bg-white rounded-lg shadow-lg space-y-8">
+       <Helmet>
+                      <title>Post Details Page</title>
+                  </Helmet>
       <h2 className="text-3xl font-extrabold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
         {item.title}
       </h2>
@@ -80,17 +84,25 @@ const PostDetails = () => {
           </p>
         </div>
       </div>
-      
+
       <div className="text-center mt-6">
-        {item.itemType === 'Lost' ? (
+        {item.itemType === 'lost' && !isRecovered && (
           <button
             className="px-6 py-2 text-white bg-gradient-to-r from-teal-400 to-teal-600 rounded-lg shadow hover:shadow-md hover:scale-105 transition disabled:opacity-50"
             onClick={() => setShowModal(true)}
-            disabled={isRecovered}
           >
-            {isRecovered ? 'Recovered' : 'Found This!'}
+            Found This!
           </button>
-        ) : (
+        )}
+        {item.itemType === 'Found' && !isRecovered && (
+          <button
+            className="px-6 py-2 text-white bg-gradient-to-r from-teal-400 to-teal-600 rounded-lg shadow hover:shadow-md hover:scale-105 transition disabled:opacity-50"
+            onClick={() => setShowModal(true)}
+          >
+            This is Mine!
+          </button>
+        )}
+        {isRecovered && (
           <button
             className="px-6 py-2 text-white bg-gray-500 rounded-lg shadow cursor-not-allowed"
             disabled
@@ -99,6 +111,7 @@ const PostDetails = () => {
           </button>
         )}
       </div>
+
 
       {showModal && (
         <div

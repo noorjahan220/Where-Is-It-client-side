@@ -3,6 +3,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/Authcontext/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const AddItems = () => {
     const { user } = useContext(AuthContext);
@@ -42,7 +43,10 @@ const AddItems = () => {
     };
 
     return (
-        <div className="p-10 mx-10 my-5 ">
+        <div className="lg:p-10 mx-10 my-5 ">
+             <Helmet>
+                            <title>Add Lost & Found Item Page</title>
+                        </Helmet>
             <form className="mx-auto p-10 m-14 bg-white rounded-xl shadow-lg space-y-6 hover:shadow-2xl transition-shadow duration-300" onSubmit={handleAddItems}>
                 <h2 className="text-3xl font-bold text-teal-600 mb-6">Add New Item</h2>
 
