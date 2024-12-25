@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate} from 'react-router-dom';
 import AuthContext from '../../context/Authcontext/AuthContext';
 import toast from 'react-hot-toast';
 
 const UpdateItems = () => {
     const item = useLoaderData();
-    const { _id, itemType, title, description, category, location, dateLost,image } = item;
+    const { _id, itemType, title, description, category, location, dateLost, image } = item;
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate()
+
     const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
         const itemType = form.itemType.value;
         const title = form.title.value;
-      
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
@@ -20,7 +21,6 @@ const UpdateItems = () => {
 
         const newItem = {
             itemType,
-            
             title,
             description,
             category,
@@ -28,29 +28,36 @@ const UpdateItems = () => {
             dateLost,
             email: user.email,
             name: user.displayName,
-        }
-        fetch(`https://b10a11-server-side-noorjahan220.vercel.app/itemUpdate/${_id}`,{
-            method : 'PUT',
-            headers :{
-                'content-type' : 'application/json'
+        };
+
+        fetch(`https://b10a11-server-side-noorjahan220.vercel.app/itemUpdate/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
             },
-            body:JSON.stringify(newItem)
+            body: JSON.stringify(newItem),
         })
-        .then(res=>res.json())
-        .then(data => {
-            if(data.modifiedCount > 0){
-                toast.success("Campaign updated successfully!");
-            }else {
-                toast.error("Campaign didn't update.");
-              }
-        })
-    }
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success("Item updated successfully!");
+                    navigate('/myItems')
+
+                } else {
+                    toast.error("Item update failed.");
+                }
+            });
+    };
+
     return (
-        <div>
-            <form className="p-16" onSubmit={handleUpdate}>
+        <div className="container mx-auto w-[70%] mb-10 mt-10 bg-white rounded-lg shadow-lg space-y-8">
+            <h2 className="text-3xl font-extrabold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                Update Item Details
+            </h2>
+            <form className="space-y-6 p-8 " onSubmit={handleUpdate}>
                 {/* Post Type */}
-                <div className="mb-4">
-                    <label htmlFor="postType" className="block text-sm font-medium text-gray-700">
+                <div className="form-control">
+                    <label htmlFor="postType" className="block text-sm font-medium text-teal-600">
                         Post Type
                     </label>
                     <select
@@ -67,41 +74,35 @@ const UpdateItems = () => {
 
                 {/* Image Upload */}
                 <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Upload Image URL</span>
-                    </label>
+                    <label className="block text-sm font-medium text-teal-600">Upload Image URL</label>
                     <input
                         type="text"
                         name="image"
                         defaultValue={image}
-                        placeholder="Upload Image URL"
-                        className="input input-bordered"
+                        placeholder="Enter Image URL"
+                        className="input input-bordered w-full mt-2"
                         required
                     />
                 </div>
 
                 {/* Title */}
                 <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Title</span>
-                    </label>
+                    <label className="block text-sm font-medium text-teal-600">Title</label>
                     <input
                         type="text"
                         name="title"
                         defaultValue={title}
                         placeholder="Title"
-                        className="input input-bordered"
+                        className="input input-bordered w-full mt-2"
                         required
                     />
                 </div>
 
                 {/* Description */}
                 <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Description</span>
-                    </label>
+                    <label className="block text-sm font-medium text-teal-600">Description</label>
                     <textarea
-                        className="textarea textarea-bordered"
+                        className="textarea textarea-bordered w-full mt-2"
                         placeholder="Description"
                         name="description"
                         defaultValue={description}
@@ -111,16 +112,12 @@ const UpdateItems = () => {
 
                 {/* Category */}
                 <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Category</span>
-                    </label>
+                    <label className="block text-sm font-medium text-teal-600">Category</label>
                     <select
                         defaultValue={category}
                         name="category"
-
-                        className="select select-ghost w-full max-w-xs"
+                        className="select select-bordered w-full mt-2"
                     >
-                        <option >Category</option>
                         <option>Pets</option>
                         <option>Documents</option>
                         <option>Gadgets</option>
@@ -129,58 +126,56 @@ const UpdateItems = () => {
 
                 {/* Location */}
                 <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Location</span>
-                    </label>
+                    <label className="block text-sm font-medium text-teal-600">Location</label>
                     <input
                         type="text"
                         name="location"
                         defaultValue={location}
                         placeholder="Where was the item lost?"
-                        className="input input-bordered"
+                        className="input input-bordered w-full mt-2"
                         required
                     />
                 </div>
 
                 {/* Date Lost */}
                 <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Date Lost</span>
-                    </label>
+                    <label className="block text-sm font-medium text-teal-600">Date Lost</label>
                     <input
                         type="date"
                         name="dateLost"
                         defaultValue={dateLost}
-                        className="input input-bordered"
+                        className="input input-bordered w-full mt-2"
                         required
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                {/* User Info */}
+                <div className="form-control">
+                    <label className="block text-sm font-medium text-teal-600">Email</label>
                     <input
                         type="text"
-                        
                         defaultValue={user.email}
                         readOnly
                         className="input input-bordered w-full mt-2"
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700">Name</label>
+                <div className="form-control">
+                    <label className="block text-sm font-medium text-teal-600">Name</label>
                     <input
                         type="text"
-
                         defaultValue={user.displayName}
                         readOnly
                         className="input input-bordered w-full mt-2"
                     />
                 </div>
 
-
+                {/* Update Button */}
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary">Update</button>
+                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white w-full py-2 px-4 rounded-lg shadow hover:shadow-md hover:scale-105 transition">
+                        Update Item
+                    </button>
+
                 </div>
             </form>
         </div>

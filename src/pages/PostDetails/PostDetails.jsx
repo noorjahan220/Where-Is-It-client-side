@@ -46,8 +46,8 @@ const PostDetails = () => {
   };
 
   return (
-    <div className="container mx-auto px-8 py-8 mb-10 mt-10 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-extrabold text-teal-500 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <div className="container mx-auto px-8 py-8 mb-10 mt-10 bg-white rounded-lg shadow-lg space-y-8">
+      <h2 className="text-3xl font-extrabold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
         {item.title}
       </h2>
       <div className="flex flex-col md:flex-row items-center gap-6">
@@ -58,22 +58,22 @@ const PostDetails = () => {
         />
         <div className="flex-1">
           <p className="text-[0.9rem] mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-            <strong className="font-semibold text-teal-500">Description:</strong> {item.description}
+            <strong className="font-semibold text-teal-600">Description:</strong> {item.description}
           </p>
           <p className="text-[0.9rem] mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-            <strong className="font-semibold text-teal-500">Category:</strong> {item.category}
+            <strong className="font-semibold text-teal-600">Category:</strong> {item.category}
           </p>
           <p className="text-[0.9rem] mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-            <strong className="font-semibold text-teal-500">Location:</strong> {item.location}
+            <strong className="font-semibold text-teal-600">Location:</strong> {item.location}
           </p>
           <p className="text-[0.9rem] mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-            <strong className="font-semibold text-teal-500">Date Lost:</strong> {item.dateLost}
+            <strong className="font-semibold text-teal-600">Date Lost:</strong> {item.dateLost}
           </p>
           <p className="text-[0.9rem] mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-            <strong className="font-semibold text-teal-500">Owner:</strong> {item.name}
+            <strong className="font-semibold text-teal-600">Owner:</strong> {item.name}
           </p>
           <p className="text-[0.9rem] mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-            <strong className="font-semibold text-teal-500">Contact:</strong> {item.email}
+            <strong className="font-semibold text-teal-600">Contact:</strong> {item.email}
           </p>
         </div>
       </div>
@@ -81,7 +81,7 @@ const PostDetails = () => {
       <div className="text-center mt-6">
         {item.itemType === 'Lost' ? (
           <button
-            className="px-6 py-2 text-white bg-gradient-to-r from-teal-400 to-teal-600 rounded-lg shadow hover:shadow-md hover:scale-105 transition"
+            className="px-6 py-2 text-white bg-gradient-to-r from-teal-400 to-teal-600 rounded-lg shadow hover:shadow-md hover:scale-105 transition disabled:opacity-50"
             onClick={() => setShowModal(true)}
             disabled={isRecovered}
           >
@@ -103,9 +103,9 @@ const PostDetails = () => {
           style={{ zIndex: 9999 }}
         >
           <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-            <h3 className="text-2xl font-semibold text-teal-500 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>Recovery Details</h3>
+            <h3 className="text-2xl font-semibold text-teal-600 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>Recovery Details</h3>
             <div className="mb-4">
-              <label className="block font-medium mb-2 text-teal-500">Recovered Location</label>
+              <label className="block font-medium mb-2 text-teal-600">Recovered Location</label>
               <input
                 type="text"
                 className="w-full px-4 py-2 border rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-teal-400"
@@ -115,7 +115,7 @@ const PostDetails = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block font-medium mb-2 text-teal-500">Recovered Date</label>
+              <label className="block font-medium mb-2 text-teal-600">Recovered Date</label>
               <DatePicker
                 selected={recoveredDate}
                 onChange={(date) => setRecoveredDate(date)}
@@ -123,7 +123,7 @@ const PostDetails = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block font-medium mb-2 text-teal-500">Recovered By</label>
+              <label className="block font-medium mb-2 text-teal-600">Recovered By</label>
               <div className="flex items-center gap-4">
                 <img src={user.photoURL} alt={user.displayName} className="w-12 h-12 rounded-full" />
                 <div>
