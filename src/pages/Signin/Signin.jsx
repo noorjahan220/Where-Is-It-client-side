@@ -5,8 +5,6 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
-
-
 const Signin = () => {
     const { singInUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -15,23 +13,24 @@ const Signin = () => {
     const handleSignin = e => {
         e.preventDefault();
         const form = e.target;
-        const email =form.email.value;
+        const email = form.email.value;
         const password = form.password.value;
 
-        singInUser(email,password)
-        .then(result=>{
-            console.log('sign in ', result.user)
-            const user = {email: email}
-            axios.post('https://b10a11-server-side-noorjahan220.vercel.app/jwt',user,{withCredentials: true})
-            .then(res =>{
-                console.log(res.data)
-                toast.success('Successfully signed in!');
-                navigate('/');
+        singInUser(email, password)
+            .then(result => {
+                console.log('sign in ', result.user);
+                const user = { email: email };
+                axios
+                    .post('https://b10a11-server-side-noorjahan220.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        toast.success('Successfully signed in!');
+                        navigate('/');
+                    });
             })
-        })
-        .catch(() => {
-            toast.error("Cannot sign in, please try again.");
-        });      
+            .catch(() => {
+                toast.error("Cannot sign in, please try again.");
+            });
     };
 
     const handleGoogleSignIn = () => {
@@ -44,64 +43,65 @@ const Signin = () => {
                 toast.error("Cannot sign in, please try again.");
             });
     };
+
     return (
         <div className="min-h-screen flex items-center justify-center p-6">
-            <div className="w-full max-w-md bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 transition duration-300 hover:shadow-2xl">
-                <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-gray-100">
-                    <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 transition duration-300 hover:shadow-2xl">
+                <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+                    <span className="bg-gradient-to-r from-teal-500 to-teal-600 bg-clip-text text-transparent">
                         Login
                     </span>
                 </h1>
                 <form onSubmit={handleSignin} className="space-y-4">
                     <div className="form-group">
                         <label className="label">
-                            <span className="label-text text-black dark:text-black">Email</span>
+                            <span className="label-text text-black">Email</span>
                         </label>
                         <input
                             type="email"
                             name="email"
                             placeholder="Email"
-                            className="input input-bordered w-full bg-gray-100 dark:bg-gray-700 text-black dark:text-black"
+                            className="input input-bordered w-full bg-gray-100 text-black"
                             required
                         />
                     </div>
                     <div className="form-group relative">
                         <label className="label">
-                            <span className="label-text text-black dark:text-black">Password</span>
+                            <span className="label-text text-black">Password</span>
                         </label>
                         <input
                             name="password"
                             type={showPassword ? 'text' : 'password'}
                             placeholder="Your password"
-                            className="input input-bordered w-full bg-gray-100 dark:bg-gray-700 text-black dark:text-black"
+                            className="input input-bordered w-full bg-gray-100 text-black"
                             required
                         />
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover text-gray-600 dark:text-gray-400">Forgot password?</a>
+                            <a href="#" className="label-text-alt link link-hover text-gray-600">Forgot password?</a>
                         </label>
                         <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-[3.30rem] text-black dark:text-black"
+                            className="absolute right-3 top-[3.30rem] text-black"
                         >
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
                     <div className="form-group mt-6">
-                        <button className="btn w-full bg-blue-500 text-white hover:bg-blue-600 transition duration-300">
+                        <button className="btn w-full bg-teal-500 text-white hover:bg-teal-600 transition duration-300">
                             Login
                         </button>
                     </div>
                     <button
                         type="button"
                         onClick={handleGoogleSignIn}
-                        className="btn btn-outline w-full mt-4 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300"
+                        className="btn btn-outline w-full mt-4 border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition duration-300"
                     >
                         Sign in with Google
                     </button>
-                    <div className="text-center mt-4 text-gray-600 dark:text-gray-300">
+                    <div className="text-center mt-4 text-gray-600">
                         Don't have an account?{' '}
-                        <Link to="/register" className="text-blue-500 hover:underline">
+                        <Link to="/register" className="text-teal-500 hover:underline">
                             Register
                         </Link>
                     </div>
