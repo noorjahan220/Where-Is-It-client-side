@@ -55,19 +55,21 @@ const Navbar = () => {
                                 <li><Link to="/addItems">Add Lost & Found Item</Link></li>
                                 <li><Link to="/allRecovered">All Recovered Items</Link></li>
                                 <li><Link to="/myItems">Manage My Items</Link></li>
-                                <li><button onClick={handleSignOut} className="hover:text-teal-400 transition">Sign Out</button></li>
+                                <li><button onClick={handleSignOut} className="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-4 rounded-md hover:bg-gradient-to-l transition">
+                                    Sign Out
+                                </button></li>
                             </ul>
                         </div>
                     ) : (
                         <>
                             <NavLink
                                 to="/register"
-                                className="btn btn-outline text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-white transition">
+                                className="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-5 rounded-md hover:bg-gradient-to-l transition text-[0.8rem]">
                                 Sign Up
                             </NavLink>
                             <NavLink
                                 to="/signin"
-                                className="btn btn-outline text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-white transition">
+                                className="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-5 rounded-md hover:bg-gradient-to-l transition text-[0.8rem]">
                                 Sign In
                             </NavLink>
                         </>
