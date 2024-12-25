@@ -9,7 +9,7 @@ const MyItemsPage = () => {
   const [posts, setPosts] = useState([]);
   const axiosSecure = UseAxiosSecure();
 
-  console.log(user);
+  
   useEffect(() => {
     axiosSecure.get(`/item?email=${user.email}`)
       .then(res => setPosts(res.data));
