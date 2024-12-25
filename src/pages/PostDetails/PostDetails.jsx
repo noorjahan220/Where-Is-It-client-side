@@ -18,6 +18,9 @@ const PostDetails = () => {
       itemId: item._id,
       recoveredLocation,
       recoveredDate,
+      image:item.image,
+      title :item.title,
+      description : item.description,
       recoveredBy: {
         email: user.email,
         name: user.displayName,
