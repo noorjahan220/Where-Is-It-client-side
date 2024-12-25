@@ -4,7 +4,6 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useContext } from 'react';
 import AuthContext from './../../context/Authcontext/AuthContext';
-import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const PostDetails = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +14,7 @@ const PostDetails = () => {
   const [recoveredDate, setRecoveredDate] = useState(new Date());
   const [isRecovered, setIsRecovered] = useState(false);
   const [itemType, setItemType] = useState(item.itemType);
-  const axiosSecure = UseAxiosSecure();
+  
 
  
   useEffect(() => {
@@ -37,10 +36,10 @@ const PostDetails = () => {
       },
     };
 
-    const response = await axiosSecure.post('recoveredItems',recoveryData, {
-      
+    const response = await fetch('https://b10a11-server-side-noorjahan220.vercel.app/recoveredItems', {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      
+      body: JSON.stringify(recoveryData),
     });
 
     if (response.ok) {
