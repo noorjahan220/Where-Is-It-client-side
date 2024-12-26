@@ -4,41 +4,22 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/Authcontext/AuthContext';
 import { Helmet } from 'react-helmet-async';
-import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const AddItems = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [selectImg, setSelectImg] = useState(null)
-    const axiosSecure = UseAxiosSecure();
+    const [imageUrl, setImageUrl] = useState(''); // State to hold the image URL
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setSelectImg(reader.result); // Set the base64 string
-            };
-            reader.readAsDataURL(file); // Read the file as a base64 string
-        }
-    };
-    
     const handleAddItems = (e) => {
         e.preventDefault();
-    
+
         const formData = new FormData(e.target);
         const initialData = Object.fromEntries(formData.entries());
         initialData.email = user?.email;
         initialData.name = user?.displayName;
-    
-        // Add the base64 image string to the initialData
-        if (selectImg) {
-            initialData.image = selectImg;
-        } else {
-            initialData.image = ''; // Handle the case where no image is selected
-        }
-    
-        axiosSecure.post('/items', initialData, {
+        initialData.image = imageUrl; // Add the image URL to the data
+
+        axios.post('https://b10a11-server-side-noorjahan220.vercel.app/items', initialData, {
             headers: { 'Content-Type': 'application/json' },
         })
             .then((response) => {
@@ -63,13 +44,15 @@ const AddItems = () => {
             });
     };
 
-
     return (
-        <div className="lg:px-10 lg:py-10 w-[70%] mx-auto mb-5 ">
+        <div className="lg:px-10 lg:py-10 w-[70%] mx-auto mb-5">
             <Helmet>
                 <title>Add Lost & Found Item Page</title>
             </Helmet>
-            <form className="mx-auto p-10 m-14 bg-white rounded-xl shadow-lg space-y-6 hover:shadow-2xl transition-shadow duration-300" onSubmit={handleAddItems}>
+            <form
+                className="mx-auto p-10 m-14 bg-white rounded-xl shadow-lg space-y-6 hover:shadow-2xl transition-shadow duration-300"
+                onSubmit={handleAddItems}
+            >
                 <h2 className="text-3xl font-bold text-teal-600 mb-6">Add New Item</h2>
 
                 {/* Post Type */}
@@ -82,23 +65,27 @@ const AddItems = () => {
                         name="itemType"
                         className="select select-bordered w-full mt-2 focus:ring-teal-500"
                     >
+                        <option>Post Type</option>
                         <option value="Lost">Lost</option>
                         <option value="Found">Found</option>
                         <option value="Recovered">Recovered</option>
                     </select>
                 </div>
 
-                {/* Image Upload */}
+                {/* Image URL */}
                 <div className="form-control mb-4">
-                    <label className="form-control w-full max-w-xs text-sm font-medium ">
-                    Upload Image
-                        <input type="file" className="file-input file-input-bordered w-full max-w-xs" name="image" onChange={handleImageChange}
-                            placeholder="Upload Image URL" required />
-
-
-
+                    <label className="label text-teal-600">
+                        <span className="label-text">Image URL</span>
                     </label>
-
+                    <input
+                        type="text"
+                        name="image"
+                        placeholder="Enter Image URL"
+                        className="input input-bordered w-full focus:ring-teal-500"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        required
+                    />
                 </div>
 
                 {/* Title */}
@@ -162,7 +149,7 @@ const AddItems = () => {
                 {/* Date Lost */}
                 <div className="form-control mb-4">
                     <label className="label text-teal-600">
-                        <span className="label-text">Date Lost</span>
+                        <span className="label-text">Date</span>
                     </label>
                     <input
                         type="date"
@@ -202,7 +189,7 @@ const AddItems = () => {
                 <div className="form-control">
                     <button
                         type="submit"
-                        className="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold mx-auto px-4 py-2  rounded-lg shadow-lg w-40 hover:scale-105 transform transition-all duration-300"
+                        className="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold mx-auto px-4 py-2 rounded-lg shadow-lg w-40 hover:scale-105 transform transition-all duration-300"
                     >
                         Add Post
                     </button>
