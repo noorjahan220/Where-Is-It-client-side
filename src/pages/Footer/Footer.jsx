@@ -4,7 +4,7 @@ import logo from '../../assets/istockphoto-477273563-612x612.jpg';
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-gradient-to-r from-teal-500 to-teal-700 text-white p-12">
+      <footer className="footer bg-gradient-to-r from-teal-500 to-teal-700 text-white p-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
           {/* Logo and Info Section */}
