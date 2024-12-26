@@ -4,7 +4,7 @@ const Newsletter = () => {
     return (
         <section className="bg-gray-100 dark:bg-gray-900 p-12 mb-12">
             <div className="container mx-auto px-4 text-center">
-                <h2 className="text-4xl font-extrabold mb-6 text-teal-600">
+                <h2 className="text-3xl font-extrabold mb-6 text-teal-600">
                     <span className="bg-gradient-to-r from-teal-500 to-teal-600 bg-clip-text text-transparent">
                         Never Miss an Update
                     </span>

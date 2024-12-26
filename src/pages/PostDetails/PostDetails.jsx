@@ -5,6 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useContext } from 'react';
 import AuthContext from './../../context/Authcontext/AuthContext';
 import { Helmet } from 'react-helmet-async';
+import toast from 'react-hot-toast';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const PostDetails = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +15,7 @@ const PostDetails = () => {
   const [recoveredLocation, setRecoveredLocation] = useState('');
   const [recoveredDate, setRecoveredDate] = useState(new Date());
   const [isRecovered, setIsRecovered] = useState(item.itemType === 'Recovered');
+  const axiosSecure = UseAxiosSecure();
 
   const handleSubmit = async () => {
     const recoveryData = {
@@ -29,31 +32,31 @@ const PostDetails = () => {
       },
     };
 
-    const response = await fetch('https://b10a11-server-side-noorjahan220.vercel.app/recoveredItems', {
-      method: 'POST',
+    const response = await axiosSecure.post('/recoveredItems',recoveryData, {
+    
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(recoveryData),
+      
     });
 
-    if (response.ok) {
-      await fetch(`https://b10a11-server-side-noorjahan220.vercel.app/item/${item._id}`, {
-        method: 'PATCH',
+    if (response.status === 200) {
+      await axiosSecure.patch(`/item/${item._id}`, { itemType: 'Recovered' },{
+       
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ itemType: 'Recovered' }),
+       
       });
-      alert('Item marked as recovered!');
+      toast.success('Item marked as recovered!');
       setIsRecovered(true);
       setShowModal(false);
     } else {
-      alert('Error recovering item. Please try again.');
+      toast.error('Error recovering item. Please try again.');
     }
   };
 
   return (
     <div className="container mx-auto px-8 py-8 mb-10 mt-10 bg-white rounded-lg shadow-lg space-y-8">
-       <Helmet>
-                      <title>Post Details Page</title>
-                  </Helmet>
+      <Helmet>
+        <title>Post Details Page</title>
+      </Helmet>
       <h2 className="text-3xl font-extrabold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
         {item.title}
       </h2>

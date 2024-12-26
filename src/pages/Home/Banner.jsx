@@ -66,7 +66,7 @@ const Banner = () => {
                 <p className="text-gray-700 dark:text-gray-300 mt-2">{slide.description}</p>
               </div>
               <div className="w-1/2 flex justify-center items-center">
-                <Lottie className="w-2/4" animationData={slide.animation} loop={true} />
+                <Lottie className="w-[60%]" animationData={slide.animation} loop={true} />
               </div>
             </motion.div>
           </div>

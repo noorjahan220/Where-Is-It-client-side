@@ -176,7 +176,7 @@ const UpdateItems = () => {
 
                 {/* Update Button */}
                 <div className="form-control mt-6">
-                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white w-full py-2 px-4 rounded-lg shadow hover:shadow-md hover:scale-105 transition">
+                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white w-40 mx-auto py-2 px-4 rounded-lg shadow hover:shadow-md hover:scale-105 transition">
                         Update Item
                     </button>
 

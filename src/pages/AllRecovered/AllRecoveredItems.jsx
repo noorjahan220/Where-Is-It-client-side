@@ -1,19 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FiGrid, FiTable, FiMapPin, FiCalendar, FiUser } from 'react-icons/fi'; // Importing icons
+import { FiGrid, FiTable, FiMapPin, FiCalendar, FiUser } from 'react-icons/fi';
 import AuthContext from '../../context/Authcontext/AuthContext';
 import { Helmet } from 'react-helmet-async';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const AllRecoveredItems = () => {
   const { user } = useContext(AuthContext);
   const [recoverItem, setRecoverItem] = useState([]);
   const [isGridLayout, setIsGridLayout] = useState(true);
 
+  const axiosSecure = UseAxiosSecure();
+
   useEffect(() => {
     if (user && user.email) {
-      fetch(`https://b10a11-server-side-noorjahan220.vercel.app/recoveredItem?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => setRecoverItem(data))
-        .catch((error) => console.error("Error fetching recovered items:", error));
+      axiosSecure.get(`/recoveredItem?email=${user.email}`).then((res) => setRecoverItem(res.data));
     }
   }, [user]);
 
@@ -24,20 +24,32 @@ const AllRecoveredItems = () => {
 
   return (
     <div className="p-10 space-y-8 bg-white">
-       <Helmet>
-                      <title>All Recovered Items Page</title>
-                  </Helmet>
+      <Helmet>
+        <title>All Recovered Items Page</title>
+      </Helmet>
+
       {/* Button to toggle between grid and table view */}
-      <button
-        onClick={toggleLayout}
-        className="mb-6 p-3 bg-teal-500 text-white rounded-md hover:bg-teal-600 flex items-center gap-2"
-      >
-        {isGridLayout ? (
-          <FiTable />
-        ) : (
-          <FiGrid />
-        )}
-      </button>
+      <div className="flex justify-end">
+        <button
+          onClick={toggleLayout}
+          className={`mb-6 px-6 py-3 rounded-md font-semibold flex items-center gap-2 transition-all duration-300 ${isGridLayout
+              ? 'bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-md transform hover:scale-105'
+              : 'bg-gray-200 text-gray-600 hover:bg-teal-400 hover:text-white'
+            }`}
+        >
+          {isGridLayout ? (
+            <h2 className="flex items-center gap-2">
+              <FiTable className="text-lg" />
+              Table View
+            </h2>
+          ) : (
+            <h2 className="flex items-center gap-2">
+              <FiGrid className="text-lg" />
+              Grid View
+            </h2>
+          )}
+        </button>
+      </div>
 
       {/* Conditional Rendering for Grid or Table Layout */}
       {recoverItem.length > 0 ? (
@@ -58,10 +70,10 @@ const AllRecoveredItems = () => {
 
                 {/* Title */}
                 <h3 className="font-semibold text-lg text-gray-800">{item.title}</h3>
-                
+
                 {/* Description */}
                 <p className="text-gray-600">{item.description || 'No description available.'}</p>
-                
+
                 {/* Icons */}
                 <div className="mt-4 text-sm text-gray-500 space-y-2">
                   <div className="flex items-center gap-2">
