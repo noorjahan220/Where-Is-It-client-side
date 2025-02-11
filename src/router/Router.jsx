@@ -44,6 +44,12 @@ const router = createBrowserRouter([
 
       },
       {
+        path: '/aboutUs',
+        element: <PrivateRoute><MyItemsPage /></PrivateRoute>,
+
+
+      },
+      {
         path: "*",
         element: <ErrorPage />
       },
