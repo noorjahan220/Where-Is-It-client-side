@@ -14,7 +14,7 @@ This project provides hands-on experience in building a full-stack application, 
 
 ## **Live Demo** 🌐
 
-[**WhereIsIt Live Website**](https://lost-found-32de4.web.app/myItems)
+[**WhereIsIt Live Website**](https://lost-found-32de4.web.app)
 
 ## **Key Features** 💡
 
