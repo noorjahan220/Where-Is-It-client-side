@@ -47,7 +47,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="container mx-auto my-8 bg-white dark:bg-gray-800 rounded-lg">
+    <div className="container mx-auto my-8  bg-white dark:bg-gray-800 rounded-lg">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="p-6 h-[500px] bg-white rounded-lg shadow-lg dark:bg-gray-900 dark:border dark:border-gray-700">

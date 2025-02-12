@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../assets/istockphoto-477273563-612x612.jpg';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -39,13 +40,13 @@ const Footer = () => {
           <nav>
             <h6 className="footer-title text-lg font-semibold">Company</h6>
             <div className="space-y-3">
-              <a href="#" className="link link-hover hover:text-teal-200 transition">About us</a>
+              <Link to="/" className="link link-hover hover:text-teal-200 transition">Home</Link>
               <br />
-              <a href="#" className="link link-hover hover:text-teal-200 transition">Contact</a>
+              <Link to="/aboutUs" className="link link-hover hover:text-teal-200 transition">About Us</Link>
               <br />
-              <a href="#" className="link link-hover hover:text-teal-200 transition">Jobs</a>
-              <br />
-              <a href="#" className="link link-hover hover:text-teal-200 transition">Press kit</a>
+              <Link to="/contact" className="link link-hover hover:text-teal-200 transition">Contact</Link>
+             
+             
             </div>
           </nav>
 

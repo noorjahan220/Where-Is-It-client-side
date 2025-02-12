@@ -23,6 +23,7 @@ const Navbar = () => {
             <li><NavLink to="/" className="hover:text-teal-400 transition">Home</NavLink></li>
             <li><NavLink to="/allItems" className="hover:text-teal-400 transition">Lost & Found Items</NavLink></li>
             <li><NavLink to="/aboutUs" className="hover:text-teal-400 transition">AboutUs</NavLink></li>
+            <li><NavLink to="/contact" className="hover:text-teal-400 transition">Contact</NavLink></li>
         </>
     );
 

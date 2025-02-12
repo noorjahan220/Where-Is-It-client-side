@@ -17,11 +17,11 @@ const LatestItems = () => {
     }, []);
 
     return (
-        <div className="container mx-auto px-6 py-8">
+        <div className="container mx-auto px-6 py-8 ">
             {/* Header Section */}
             <div className="text-center mb-8">
-                <h2 className="text-2xl font-semibold text-teal-600 mb-2">Latest Items</h2>
-                <p className="text-gray-600">Check out the most recently added items!</p>
+                <h2 className="text-3xl font-bold text-teal-600 mb-2">Latest Items</h2>
+                <p className="text-gray-600 font-semibold">Check out the most recently added items!</p>
             </div>
 
             {/* Items Grid */}
@@ -38,7 +38,7 @@ const LatestItems = () => {
             {/* Footer Section */}
             <div className="text-center">
                 <Link to="/allItems">
-                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 focus:outline-none">
+                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 focus:outline-none">
                         See More Items
                     </button>
                 </Link>

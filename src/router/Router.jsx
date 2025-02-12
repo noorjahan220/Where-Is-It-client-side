@@ -15,6 +15,7 @@ import AllRecoveredItems from "../pages/AllRecovered/AllRecoveredItems";
 import UpdateItems from "../pages/UpdateItems/UpdateItems";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import Contact from "../pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <ErrorPage />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
       },
       {
         path: "/items/:id",

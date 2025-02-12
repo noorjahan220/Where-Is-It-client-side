@@ -29,7 +29,7 @@ const ItemsCard = ({ item }) => {
         <h2 className="text-lg font-semibold text-gray-800 mt-1">{title}</h2>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 mt-1 mb-1">{description.slice(0, 60)}...</p>
+        <p className="text-sm text-gray-600 mt-1 mb-2">{description.slice(0, 60)}...</p>
 
         {/* Action Button */}
         <button

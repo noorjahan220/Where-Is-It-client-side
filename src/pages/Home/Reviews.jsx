@@ -19,7 +19,7 @@ const Reviews = () => {
             "_id": "3",
             "name": "Fahim Khan",
             "rating": 5,
-            "comment": "Amazing! I found my missing phone using this platform, and it was a super easy process. Thank you so much for creating such a helpful site!"
+            "comment": "Amazing! I found my missing phone using this platform, and it was a super easy process. Thank you !"
         },
         {
             "_id": "4",
@@ -31,13 +31,13 @@ const Reviews = () => {
             "_id": "5",
             "name": "Ali Rahman",
             "rating": 4,
-            "comment": "Very reliable website. I was able to post my lost item and get quick responses from people who found similar items. A few bugs here and there, but great overall."
+            "comment": "Very reliable website. I was able to post my lost item and get quick responses from people who found similar items."
         },
         {
             "_id": "6",
             "name": "Sara Ali",
             "rating": 5,
-            "comment": "A fantastic experience! Found my lost wallet in less than 24 hours. The interface is clean, and the process is so simple. Definitely a 5-star service!"
+            "comment": "A fantastic experience! Found my lost wallet in less than 24 hours. The interface is clean, and the process is so simple."
         }
     ]);
 
@@ -73,11 +73,11 @@ const Reviews = () => {
     };
 
     return (
-        <div className="container mx-auto px-6 py-8">
+        <div className="container mx-auto px-6 py-8  mb-12">
             {/* Header Section */}
             <div className="text-center mb-8">
-                <h2 className="text-3xl font-semibold text-teal-600 mb-2">Customer Reviews</h2>
-                <p className="text-gray-600 text-lg">Read what our users have to say!</p>
+                <h2 className="text-3xl font-bold text-teal-600 mb-2">Customer Reviews</h2>
+                <p className="text-gray-600 font-semibold">Read what our users have to say!</p>
             </div>
 
             {/* Slider */}
@@ -120,7 +120,7 @@ const Reviews = () => {
             {/* Footer Section */}
             <div className="text-center mt-8">
                 <Link to="/addReview">
-                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 focus:outline-none">
+                    <button className="bg-gradient-to-r from-teal-400 to-teal-600 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 focus:outline-none">
                         Add Your Review
                     </button>
                 </Link>
