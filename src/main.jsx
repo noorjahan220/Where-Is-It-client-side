@@ -8,7 +8,7 @@ import {
 import router from './router/Router.jsx';
 import AuthProvider from './context/Authcontext/AuthProvider.jsx';
 import { HelmetProvider } from 'react-helmet-async';
-
+import 'swiper/css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

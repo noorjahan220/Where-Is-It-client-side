@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import logo from '../../assets/istockphoto-477273563-612x612.jpg';
 import AuthContext from '../../context/Authcontext/AuthContext';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger menu
-
+    const navigate = useNavigate();
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="sticky top-0 z-50 bg-white text-teal-600 shadow-lg px-3 lg:px-8">
             <div className="navbar  mx-auto ">
                 {/* Navbar Start */}
-                <div className="navbar-start flex items-center">
+                <div className="navbar-start flex items-center" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
                     {/* Logo */}
                     <img className="w-16 rounded-full" src={logo} alt="Lost and Found Logo" />
                     <span className="text-2xl font-bold ml-3 font-poppins text-teal-600">WhereIsIt</span>
@@ -38,7 +38,7 @@ const Navbar = () => {
 
                 {/* Navbar Center for Large Screens */}
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal space-x-6 text-teal-600 font-medium">
+                    <ul className="menu menu-horizontal space-x-2 text-teal-600 font-medium">
                         {links}
                     </ul>
                 </div>
@@ -58,8 +58,7 @@ const Navbar = () => {
                             <ul
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-white text-teal-600 rounded-box mt-3 w-52 shadow-lg">
-                                  <li><NavLink to="/" className="hover:text-teal-400 transition">Home</NavLink></li>
-                                  <li><NavLink to="/allItems" className="hover:text-teal-400 transition">Lost & Found Items</NavLink></li>  
+                                  {links} 
                                 <li><Link to="/addItems">Add Lost & Found Item</Link></li>
                                 <li><Link to="/allRecovered">All Recovered Items</Link></li>
                                 <li><Link to="/myItems">Manage My Items</Link></li>
