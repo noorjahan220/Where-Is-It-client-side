@@ -103,7 +103,7 @@ const Navbar = () => {
                                         <li>
                                             <NavLink
                                                 to="/register"
-                                                className="block bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-4 rounded-md hover:bg-gradient-to-l transition"
+                                                className="block bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-gradient-to-l transition"
                                             >
                                                 Sign Up
                                             </NavLink>
@@ -111,7 +111,7 @@ const Navbar = () => {
                                         <li>
                                             <NavLink
                                                 to="/signin"
-                                                className="block bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-4 rounded-md hover:bg-gradient-to-l transition"
+                                                className="block bg-gradient-to-r from-red-500 to-red-700 text-white font-bold py-2 px-4 rounded-lg hover:bg-gradient-to-l transition"
                                             >
                                                 Sign In
                                             </NavLink>

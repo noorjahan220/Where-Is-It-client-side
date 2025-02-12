@@ -23,7 +23,7 @@ const AllRecoveredItems = () => {
   };
 
   return (
-    <div className="p-10 space-y-8 bg-white">
+    <div className="p-10 pb-32 min-h-screen bg-white">
       <Helmet>
         <title>All Recovered Items Page</title>
       </Helmet>
@@ -32,7 +32,7 @@ const AllRecoveredItems = () => {
       <div className="flex justify-end">
         <button
           onClick={toggleLayout}
-          className={`mb-6 px-6 py-3 rounded-md font-semibold flex items-center gap-2 transition-all duration-300 ${isGridLayout
+          className={`mb-6 px-4 py-2 rounded-lg  flex items-center gap-2 transition-all duration-300 ${isGridLayout
               ? 'bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-md transform hover:scale-105'
               : 'bg-gray-200 text-gray-600 hover:bg-teal-400 hover:text-white'
             }`}

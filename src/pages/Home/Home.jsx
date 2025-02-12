@@ -8,7 +8,7 @@ import Reviews from './Reviews';
 
 const Home = () => {
     return (
-        <div>
+        <div className='min-h-screen'>
             <Helmet>
                 <title>Home Page</title>
             </Helmet>

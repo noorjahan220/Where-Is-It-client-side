@@ -189,7 +189,7 @@ const AddItems = () => {
                 <div className="form-control">
                     <button
                         type="submit"
-                        className="bg-gradient-to-r from-red-500 to-red-700 text-white font-bold mx-auto px-4 py-2 rounded-lg shadow-lg w-40 hover:scale-105 transform transition-all duration-300"
+                        className="bg-gradient-to-r from-red-500 to-red-700 text-white mx-auto px-4 py-2 rounded-lg shadow-lg w-40 hover:scale-105 transform transition-all duration-300"
                     >
                         Add Post
                     </button>

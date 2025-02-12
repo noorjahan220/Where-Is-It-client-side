@@ -7,7 +7,7 @@ const AboutUs = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen ">
       {/* Hero Section */}
       <section className="text-center mb-20 ">
         <h1 className="text-3xl md:text-xl font-bold mb-6 bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">

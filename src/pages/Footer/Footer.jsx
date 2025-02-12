@@ -17,7 +17,7 @@ const Footer = () => {
             />
             <p className="text-lg font-medium text-center md:text-left">
               WhereIsIt. <br />
-              Providing reliable services since 1992
+              Providing reliable services since 2024
             </p>
           </aside>
 

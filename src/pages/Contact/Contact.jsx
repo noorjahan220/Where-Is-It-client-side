@@ -67,7 +67,7 @@ const handleSubmit = (e) => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center ">
+        <div className="min-h-screen flex items-center justify-center  ">
             <div className="container px-6 py-12">
                 {/* Contact Section */}
                 <div className="flex items-center justify-center  ">

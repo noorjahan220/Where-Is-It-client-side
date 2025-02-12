@@ -64,7 +64,7 @@ const MyItemsPage = () => {
   };
 
   return (
-    <div className="p-10 space-y-8 bg-white">
+    <div className="p-10 pb-32 min-h-screen bg-white">
        <Helmet>
                       <title> Manage My Items Page</title>
                   </Helmet>
