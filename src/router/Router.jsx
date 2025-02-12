@@ -14,6 +14,7 @@ import MyItemsPage from "../pages/MyItemsPage/MyItemsPage";
 import AllRecoveredItems from "../pages/AllRecovered/AllRecoveredItems";
 import UpdateItems from "../pages/UpdateItems/UpdateItems";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,12 @@ const router = createBrowserRouter([
       {
         path: '/myItems',
         element: <PrivateRoute><MyItemsPage /></PrivateRoute>,
+
+
+      },
+      {
+        path: '/aboutUs',
+        element:<AboutUs />,
 
 
       },
