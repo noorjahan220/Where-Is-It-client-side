@@ -8,12 +8,16 @@ const AllRecoveredItems = () => {
   const { user } = useContext(AuthContext);
   const [recoverItem, setRecoverItem] = useState([]);
   const [isGridLayout, setIsGridLayout] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const axiosSecure = UseAxiosSecure();
 
   useEffect(() => {
     if (user && user.email) {
-      axiosSecure.get(`/recoveredItem?email=${user.email}`).then((res) => setRecoverItem(res.data));
+      axiosSecure.get(`/recoveredItem?email=${user.email}`).then((res) => {
+        setRecoverItem(res.data);
+        setLoading(false);
+      });
     }
   }, [user]);
 
@@ -51,8 +55,15 @@ const AllRecoveredItems = () => {
         </button>
       </div>
 
+      {/* Show Spinner while loading */}
+      {loading && (
+        <div className="flex justify-center items-center h-32">
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-teal-500"></div>
+        </div>
+      )}
+
       {/* Conditional Rendering for Grid or Table Layout */}
-      {recoverItem.length > 0 ? (
+      {!loading && (recoverItem.length > 0 ? (
         isGridLayout ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recoverItem.map((item) => (
@@ -133,7 +144,7 @@ const AllRecoveredItems = () => {
           <p className="text-xl font-semibold">No recovered items found.</p>
           <p>It seems like there are no items to display at the moment. Please check back later!</p>
         </div>
-      )}
+      ))}
     </div>
   );
 };

@@ -9,9 +9,15 @@ const AllItems = () => {
     const [searchValue, setSearchValue] = useState('');
     const [debouncedSearchValue, setDebouncedSearchValue] = useState(searchValue);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [loading, setLoading] = useState(true);
     
     // Get all unique categories
     const categories = [...new Set(items.map(item => item.category))];
+
+    // Simulate loading effect
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000);
+    }, []);
 
     // Debounce search input to improve performance
     useEffect(() => {
@@ -87,18 +93,24 @@ const AllItems = () => {
 
                 {/* Main Content Section */}
                 <div className="md:w-3/4 w-full">
-                    {/* Items Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredItems.length > 0 ? (
-                            filteredItems.map((item) => (
-                                <ItemsCard key={item._id} item={item} />
-                            ))
-                        ) : (
-                            <p className="text-center text-gray-500 col-span-full text-lg font-medium">
-                                No items match your search or category!
-                            </p>
-                        )}
-                    </div>
+                    {/* Spinner */}
+                    {loading ? (
+                        <div className="flex justify-center items-center h-32">
+                            <div className="w-12 h-12 border-4 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filteredItems.length > 0 ? (
+                                filteredItems.map((item) => (
+                                    <ItemsCard key={item._id} item={item} />
+                                ))
+                            ) : (
+                                <p className="text-center text-gray-500 col-span-full text-lg font-medium">
+                                    No items match your search or category!
+                                </p>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
 

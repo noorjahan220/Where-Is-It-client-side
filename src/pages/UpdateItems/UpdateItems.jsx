@@ -55,7 +55,7 @@ const UpdateItems = () => {
              <Helmet>
                             <title>Update Items Page</title>
                         </Helmet>
-            <h2 className="text-3xl font-extrabold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-3xl font-bold text-teal-600 mb-6 text-center" style={{ fontFamily: 'Poppins, sans-serif' }}>
                 Update Item Details
             </h2>
             <form className="space-y-6 p-8 " onSubmit={handleUpdate}>
