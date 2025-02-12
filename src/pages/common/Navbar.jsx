@@ -26,7 +26,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="sticky top-0 z-50 bg-white text-teal-600 shadow-lg">
+        <div className="sticky top-0 z-50 bg-white text-teal-600 shadow-lg px-3 lg:px-8">
             <div className="navbar  mx-auto ">
                 {/* Navbar Start */}
                 <div className="navbar-start flex items-center">
