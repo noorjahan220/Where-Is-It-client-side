@@ -1,10 +1,14 @@
 # WhereIsIt - Lost and Found Website
 
-![WhereIsIt Banner](https://i.ibb.co.com/23dmCLd8/Screenshot-475.png)
+<!-- This HTML tag fixes the image size issue -->
+<div align="center">
+  <img src="https://i.ibb.co.com/23dmCLd8/Screenshot-475.png" alt="WhereIsIt Banner" width="100%" style="border-radius: 10px;">
+</div>
+
+<br/>
 
 ## 🔗 Live Links
 - **Live Site:** [Visit WhereIsIt](https://lost-found-32de4.web.app)
-- **Server API:** [Server Link](https://whereisit-server.vercel.app) *(Replace with your server link if available)*
 
 ## 📖 Project Overview
 **WhereIsIt** is a community-driven platform designed to connect individuals who have lost personal belongings with those who may have found them. 
@@ -90,7 +94,7 @@ Bash
 
 cd client
 npm install
-Create a .env.local file in the client directory (Vite example):
+Create a .env.local file in the client directory:
 
 env
 
