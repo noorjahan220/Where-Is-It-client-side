@@ -1,6 +1,7 @@
 # WhereIsIt - Lost and Found Website
+
 <div align="center">
-  <img src="https://i.ibb.co.com/23dmCLd8/Screenshot-475.png" alt="WhereIsIt Banner" width="100%"
+  <img src="https://i.ibb.co.com/23dmCLd8/Screenshot-475.png" alt="WhereIsIt Banner" width="100%" style="border-radius: 10px;" />
 </div>
   
 ## 🔗 Live Links
