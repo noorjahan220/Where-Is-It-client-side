@@ -5,8 +5,6 @@
   <img src="https://i.ibb.co.com/23dmCLd8/Screenshot-475.png" alt="WhereIsIt Banner" width="100%"
 </div>
 
-<br/>
-
 ## 🔗 Live Links
 - **Live Site:** [Visit WhereIsIt](https://lost-found-32de4.web.app)
 
