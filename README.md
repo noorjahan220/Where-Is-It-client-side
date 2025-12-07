@@ -1,10 +1,8 @@
 # WhereIsIt - Lost and Found Website
-
-<!-- This HTML tag fixes the image size issue -->
 <div align="center">
   <img src="https://i.ibb.co.com/23dmCLd8/Screenshot-475.png" alt="WhereIsIt Banner" width="100%"
 </div>
-
+  
 ## 🔗 Live Links
 - **Live Site:** [Visit WhereIsIt](https://lost-found-32de4.web.app)
 
