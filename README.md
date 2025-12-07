@@ -2,7 +2,7 @@
 
 <!-- This HTML tag fixes the image size issue -->
 <div align="center">
-  <img src="https://i.ibb.co.com/VY1g37CR/Screenshot-474.png" alt="WhereIsIt Banner" width="100%" style="border-radius: 10px;">
+  <img src="https://i.ibb.co.com/23dmCLd8/Screenshot-475.png" alt="WhereIsIt Banner" width="100%"
 </div>
 
 <br/>
